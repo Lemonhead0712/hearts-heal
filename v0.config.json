@@ -1,0 +1,19 @@
+{
+  "name": "hearts-heal",
+  "description": "A mental health support platform",
+  "framework": "nextjs",
+  "components": {
+    "ui": {
+      "path": "components/ui",
+      "type": "shadcn"
+    },
+    "page": {
+      "path": "app",
+      "type": "nextjs"
+    }
+  },
+  "styles": {
+    "tailwind": true,
+    "css": "app/globals.css"
+  }
+} 
