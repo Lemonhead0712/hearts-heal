@@ -8,13 +8,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/logo"
 import { BottomNav } from "@/components/bottom-nav"
-import { PaymentForm } from "@/components/payment-form"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { useSubscription } from "@/contexts/subscription-context"
 import { SubscriptionStatus } from "@/components/subscription-status"
-import { StripeSubscriptionButton } from "@/components/stripe-subscription-button"
 import { SubscriptionQRCode } from "@/components/subscription-qr-code"
 import { PageContainer } from "@/components/page-container"
 
@@ -356,16 +354,49 @@ export default function SubscriptionPage() {
 
                     <TabsContent value="card">
                       {isTestMode ? (
-                        <StripeSubscriptionButton
-                          buyButtonId="buy_btn_1RJ8gsPVn60sGdDzjgejmFFT"
-                          publishableKey="pk_test_51RHmIePVn60sGdDzn67iigTSQqtiExeHG8VIJL7FLOTg23xZkU8JiCDfSDXvoHgOo6PgApefFiXCRkHH3UQwDDsP00mYjI9ZAf"
-                        />
+                        <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-md">
+                          <h4 className="text-sm font-medium text-blue-800 mb-2">Test Mode Credit Cards</h4>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <div className="flex items-center">
+                              <Badge className="bg-green-100 text-green-800 mr-2">Success</Badge>
+                              <span className="text-blue-700">4242 4242 4242 4242</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Badge className="bg-red-100 text-red-800 mr-2">Declined</Badge>
+                              <span className="text-blue-700">4000 0000 0000 0002</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Badge className="bg-yellow-100 text-yellow-800 mr-2">Auth Required</Badge>
+                              <span className="text-blue-700">4000 0025 0000 3155</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Badge className="bg-purple-100 text-purple-800 mr-2">Any Future Date</Badge>
+                              <span className="text-blue-700">Exp: 12/34, CVC: Any</span>
+                            </div>
+                          </div>
+                        </div>
                       ) : (
-                        <PaymentForm
-                          amount={500} // $5.00 in cents
-                          isTestMode={isTestMode}
-                          onPaymentStatusChange={handlePaymentStatusChange}
-                        />
+                        <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-md">
+                          <h4 className="text-sm font-medium text-blue-800 mb-2">Test Mode Credit Cards</h4>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <div className="flex items-center">
+                              <Badge className="bg-green-100 text-green-800 mr-2">Success</Badge>
+                              <span className="text-blue-700">4242 4242 4242 4242</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Badge className="bg-red-100 text-red-800 mr-2">Declined</Badge>
+                              <span className="text-blue-700">4000 0000 0000 0002</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Badge className="bg-yellow-100 text-yellow-800 mr-2">Auth Required</Badge>
+                              <span className="text-blue-700">4000 0025 0000 3155</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Badge className="bg-purple-100 text-purple-800 mr-2">Any Future Date</Badge>
+                              <span className="text-blue-700">Exp: 12/34, CVC: Any</span>
+                            </div>
+                          </div>
+                        </div>
                       )}
                     </TabsContent>
 
