@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2, Sparkles, ArrowRight } from "lucide-react"
-import confetti from "canvas-confetti"
 import { useToast } from "@/hooks/use-toast"
+import { createClientComponentClient } from "@supabase/ssr"
 
 interface ActivationSuccessProps {
   userName?: string
@@ -28,37 +28,6 @@ export function ActivationSuccess({
 
   // Trigger confetti effect on mount
   useEffect(() => {
-    try {
-      const duration = 3 * 1000
-      const end = Date.now() + duration
-
-      const frame = () => {
-        confetti({
-          particleCount: 3,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0 },
-          colors: ["#9C27B0", "#E91E63", "#673AB7"],
-        })
-
-        confetti({
-          particleCount: 3,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1 },
-          colors: ["#9C27B0", "#E91E63", "#673AB7"],
-        })
-
-        if (Date.now() < end) {
-          requestAnimationFrame(frame)
-        }
-      }
-
-      frame()
-    } catch (error) {
-      console.error("Error with confetti animation:", error)
-    }
-
     // Show toast notification
     toast({
       title: "Premium Activated!",
